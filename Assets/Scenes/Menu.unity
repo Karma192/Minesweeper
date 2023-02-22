@@ -224,10 +224,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
         m_MethodName: Mines
-        m_Mode: 0
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -895,10 +895,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
         m_MethodName: Width
-        m_Mode: 0
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1134,10 +1134,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
         m_MethodName: Height
-        m_Mode: 0
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4084,10 +4084,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Width
-        m_Mode: 5
+        m_MethodName: set_GetWidth
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4096,10 +4096,10 @@ MonoBehaviour:
           m_StringArgument: 16
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Height
-        m_Mode: 5
+        m_MethodName: set_GetHeight
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4108,10 +4108,10 @@ MonoBehaviour:
           m_StringArgument: 16
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Mines
-        m_Mode: 5
+        m_MethodName: set_GetMines
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5590,10 +5590,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Width
-        m_Mode: 5
+        m_MethodName: set_GetWidth
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5602,10 +5602,10 @@ MonoBehaviour:
           m_StringArgument: 16
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Height
-        m_Mode: 5
+        m_MethodName: set_GetHeight
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5614,10 +5614,10 @@ MonoBehaviour:
           m_StringArgument: 30
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Mines
-        m_Mode: 5
+        m_MethodName: set_GetMines
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5987,8 +5987,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2026541692}
-  - component: {fileID: 2026541691}
   - component: {fileID: 2026541693}
+  - component: {fileID: 2026541694}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -5996,21 +5996,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2026541691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026541690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873af45d54195204daab86da69c755d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _height: 0
-  _width: 0
-  _mines: 0
 --- !u!4 &2026541692
 Transform:
   m_ObjectHideFlags: 0
@@ -6038,6 +6023,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ed87d7793db034fb06e5dc8a9b48fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2026541694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026541690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873af45d54195204daab86da69c755d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _height: 0
+  _width: 0
+  _mines: 0
+  _lose: 0
+  _tiles: []
 --- !u!1 &2105845901
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,10 +6332,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Width
-        m_Mode: 5
+        m_MethodName: set_GetWidth
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6342,10 +6344,10 @@ MonoBehaviour:
           m_StringArgument: 8
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Height
-        m_Mode: 5
+        m_MethodName: set_GetHeight
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6354,10 +6356,10 @@ MonoBehaviour:
           m_StringArgument: 8
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2026541691}
+      - m_Target: {fileID: 2026541694}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: Mines
-        m_Mode: 5
+        m_MethodName: set_GetMines
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

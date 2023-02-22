@@ -13,7 +13,14 @@ public class CreateTab : MonoBehaviour
     [SerializeField] GameObject data;
     [SerializeField] GameObject parent;
 
-    enum Tile
+    [SerializeField] private GameObject[,] _board;
+
+    public int Height { get => _height; }
+    public int Width { get => _width; }
+    public int Mine { get => _nbMine; }
+    public GameObject[,] Board { get => _board; }
+
+    public enum Tile
     {
         SAFE = 0,
         MINE = 1,
@@ -39,34 +46,27 @@ public class CreateTab : MonoBehaviour
 
     void InitTab()
     {
-        int[,] board = SetBoard();
+        _board = SetBoard();
 
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < _board.GetLength(0); i++)
         {
-            for(int j = 0; j < board.GetLength(1); j++)
+            for(int j = 0; j < _board.GetLength(1); j++)
             {
-                if (board[i,j] == (int)Tile.MINE)
-                {
-                    GameObject tile = Instantiate(mine, new Vector2(i * (int)Tile.SIZE, j * (int)Tile.SIZE), Quaternion.identity);
-                    tile.transform.parent = parent.transform;
-                } else if (board[i,j] == (int)Tile.SAFE)
-                {
-                    GameObject tile = Instantiate(safeTile, new Vector2(i * (int)Tile.SIZE, j * (int)Tile.SIZE), Quaternion.identity);
-                    tile.transform.parent = parent.transform;
-                }
+                GameObject tile = Instantiate(_board[i,j], new Vector2(i * (int)Tile.SIZE, j * (int)Tile.SIZE), Quaternion.identity);
+                tile.transform.parent = parent.transform;
             }
         }
     }
 
-    int[,] SetBoard()
+    GameObject[,] SetBoard()
     {
-        int[,] tmp = new int[_width, _height];
+        GameObject[,] tmp = new GameObject[_width, _height];
 
         for (int i = 0; i < tmp.GetLength(0)-1; i++)
         {
             for (int j = 0; j < tmp.GetLength(1)-1; j++)
             {
-                tmp[i, j] = (int)Tile.SAFE;
+                tmp[i, j] = safeTile;
             }
         }
 
@@ -79,9 +79,9 @@ public class CreateTab : MonoBehaviour
                 int x = Random.Range(0, _width);
                 int y = Random.Range(0, _height);
 
-                if (tmp[x,y] == (int)Tile.SAFE)
+                if (tmp[x,y] == safeTile)
                 {
-                    tmp[x,y] = (int)Tile.MINE;
+                    tmp[x,y] = mine;
                     exit = true;
                 }
             }
