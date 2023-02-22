@@ -227,7 +227,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
         m_MethodName: Mines
-        m_Mode: 5
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -898,7 +898,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
         m_MethodName: Width
-        m_Mode: 5
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1137,7 +1137,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
         m_MethodName: Height
-        m_Mode: 5
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1527,7 +1527,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2084,7 +2084,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2026541693}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_TargetAssemblyTypeName: SceneMaster, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -2613,25 +2613,25 @@ MonoBehaviour:
     the number clues to solve the game by opening all of the safe squares. If you
     click on a mine you lose the game!
 
-    
 
-    Windows Minesweeper always makes
-    the first click safe. You open squares with the left mouse button and put flags
-    on mines with the right mouse button. Pressing the right mouse button again changes
+
+    Windows Minesweeper always makes the
+    first click safe. You open squares with the left mouse button and put flags on
+    mines with the right mouse button. Pressing the right mouse button again changes
     your flag into a questionmark. When you open a square that does not touch any
     mines, it will be empty and the adjacent squares will automatically open in all
     directions until reaching squares that contain numbers. A common strategy for
     starting games is to randomly click until you get a big opening with lots of
     numbers.
 
-    
 
-    If you flag all of the mines touching a number, chording
-    on the number opens the remaining squares. Chording is when you press both mouse
-    buttons at the same time. This can save you a lot of work! However, if you place
-    the correct number of flags on the wrong squares, chording will explode the mines.
 
-    
+    If you flag all of the mines touching a number, chording on the
+    number opens the remaining squares. Chording is when you press both mouse buttons
+    at the same time. This can save you a lot of work! However, if you place the
+    correct number of flags on the wrong squares, chording will explode the mines.
+
+
 
     The
     three difficulty levels are Beginner (8x8 or 9x9 with 10 mines), Intermediate
@@ -2640,10 +2640,10 @@ MonoBehaviour:
     and a clock shows your time in seconds. Minesweeper saves your best time for
     each difficulty level.
 
-    
 
-    You also can play Custom games up to 30x24
-    with a minimum of 10 mines and maximum of (x-1)(y-1) mines.'
+
+    You also can play Custom games up to 30x24 with
+    a minimum of 10 mines and maximum of (x-1)(y-1) mines.'
 --- !u!222 &679343077
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4086,38 +4086,50 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Height
-        m_Mode: 3
+        m_MethodName: Width
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 16
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 16
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Width
-        m_Mode: 3
+        m_MethodName: Height
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 16
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 16
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Mines
-        m_Mode: 3
+        m_MethodName: Mines
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 40
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 40
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2026541693}
+        m_TargetAssemblyTypeName: SceneMaster, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1267615512
@@ -5141,13 +5153,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026541690}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2026541693}
+        m_TargetAssemblyTypeName: SceneMaster, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5580,38 +5592,50 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Height
-        m_Mode: 3
+        m_MethodName: Width
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 16
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 16
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Width
-        m_Mode: 3
+        m_MethodName: Height
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 30
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 30
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Mines
-        m_Mode: 3
+        m_MethodName: Mines
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 99
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 99
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2026541693}
+        m_TargetAssemblyTypeName: SceneMaster, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1933288479
@@ -5984,9 +6008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873af45d54195204daab86da69c755d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 0
-  width: 0
-  mines: 0
+  _height: 0
+  _width: 0
+  _mines: 0
 --- !u!4 &2026541692
 Transform:
   m_ObjectHideFlags: 0
@@ -6011,7 +6035,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2026541690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10cb9bf8af60bbe459a655ab8f8db8db, type: 3}
+  m_Script: {fileID: 11500000, guid: 99ed87d7793db034fb06e5dc8a9b48fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2105845901
@@ -6308,38 +6332,50 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Height
-        m_Mode: 3
+        m_MethodName: Width
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 8
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 8
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Width
-        m_Mode: 3
+        m_MethodName: Height
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 8
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 8
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2026541691}
         m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: set_Mines
-        m_Mode: 3
+        m_MethodName: Mines
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 10
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2026541693}
+        m_TargetAssemblyTypeName: SceneMaster, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2118819652
