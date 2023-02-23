@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7206710694372282170}
+  - component: {fileID: 1655510250983884870}
   - component: {fileID: 3523895362414092616}
   - component: {fileID: 7923844683161460228}
   - component: {fileID: 7590964198303844948}
@@ -19,8 +19,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7206710694372282170
-Transform:
+--- !u!224 &1655510250983884870
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -29,13 +29,18 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 545940052536732878}
   - {fileID: 3186355906185948722}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &3523895362414092616
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -104,8 +109,12 @@ MonoBehaviour:
   _bomb: {fileID: -458877142, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
   _selected: {fileID: -509212926, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
   _flagged: 0
+  _clicked: 0
+  _nbBomb: 0
   _gameMaster: {fileID: 0}
   _child: {fileID: 0}
+  _text: {fileID: 0}
+  _neighbor: []
 --- !u!61 &7590964198303844948
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +125,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -161,7 +170,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7206710694372282170}
+  m_Father: {fileID: 1655510250983884870}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6291099359484301145
@@ -246,7 +255,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7206710694372282170}
+  m_Father: {fileID: 1655510250983884870}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

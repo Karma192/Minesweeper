@@ -33,7 +33,6 @@ public class CreateTab : MonoBehaviour
         parent = GameObject.Find("Board");
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _height = data.GetComponent<GameData>().GetHeight;
@@ -46,11 +45,11 @@ public class CreateTab : MonoBehaviour
 
     void InitTab()
     {
-        _board = SetBoard();
+        SetBoard();
 
         for (int i = 0; i < _board.GetLength(0); i++)
         {
-            for(int j = 0; j < _board.GetLength(1); j++)
+            for (int j = 0; j < _board.GetLength(1); j++)
             {
                 GameObject tile = Instantiate(_board[i,j], new Vector2(i * (int)Tile.SIZE, j * (int)Tile.SIZE), Quaternion.identity);
                 tile.transform.parent = parent.transform;
@@ -58,15 +57,15 @@ public class CreateTab : MonoBehaviour
         }
     }
 
-    GameObject[,] SetBoard()
+    private void SetBoard()
     {
-        GameObject[,] tmp = new GameObject[_width, _height];
+        _board = new GameObject[_width, _height];
 
-        for (int i = 0; i < tmp.GetLength(0)-1; i++)
+        for (int i = 0; i < _board.GetLength(0); i++)
         {
-            for (int j = 0; j < tmp.GetLength(1)-1; j++)
+            for (int j = 0; j < _board.GetLength(1); j++)
             {
-                tmp[i, j] = safeTile;
+                _board[i, j] = safeTile;
             }
         }
 
@@ -79,14 +78,12 @@ public class CreateTab : MonoBehaviour
                 int x = Random.Range(0, _width);
                 int y = Random.Range(0, _height);
 
-                if (tmp[x,y] == safeTile)
+                if (_board[x,y] == safeTile)
                 {
-                    tmp[x,y] = mine;
+                    _board[x,y] = mine;
                     exit = true;
                 }
             }
         }
-
-        return tmp;
     }
 }
