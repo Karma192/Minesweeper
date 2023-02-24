@@ -7,6 +7,8 @@ public class CreateTab : MonoBehaviour
     [SerializeField] int _height;
     [SerializeField] int _width;
     [SerializeField] int _nbMine;
+    [SerializeField] public bool _firstClick = false;
+    [SerializeField] bool _mined = false;
 
     [SerializeField] GameObject safeTile;
     [SerializeField] GameObject mine;
@@ -14,18 +16,14 @@ public class CreateTab : MonoBehaviour
     [SerializeField] GameObject parent;
 
     [SerializeField] private GameObject[,] _board;
+    [SerializeField] private GameObject[] _mines;
 
     public int Height { get => _height; }
     public int Width { get => _width; }
     public int Mine { get => _nbMine; }
     public GameObject[,] Board { get => _board; }
+    public GameObject[] Mines { get => _mines; }
 
-    public enum Tile
-    {
-        SAFE = 0,
-        MINE = 1,
-        SIZE = 1,
-    }
 
     void Awake()
     {
@@ -43,6 +41,14 @@ public class CreateTab : MonoBehaviour
         parent.transform.position = new Vector2(0.5f - _width / 2, 0.5f - _height / 2);
     }
 
+    private void LateUpdate()
+    {
+        if (_firstClick && !_mined)
+        {
+            CreateBomb();
+        }
+    }
+
     void InitTab()
     {
         SetBoard();
@@ -51,7 +57,7 @@ public class CreateTab : MonoBehaviour
         {
             for (int j = 0; j < _board.GetLength(1); j++)
             {
-                GameObject tile = Instantiate(_board[i,j], new Vector2(i * (int)Tile.SIZE, j * (int)Tile.SIZE), Quaternion.identity);
+                GameObject tile = Instantiate(_board[i, j], new Vector2(i, j), Quaternion.identity);
                 tile.transform.parent = parent.transform;
             }
         }
@@ -68,7 +74,10 @@ public class CreateTab : MonoBehaviour
                 _board[i, j] = safeTile;
             }
         }
+    }
 
+    private void CreateBomb()
+    {
         for (int i = 0; i < _nbMine; i++)
         {
             bool exit = false;
@@ -78,12 +87,14 @@ public class CreateTab : MonoBehaviour
                 int x = Random.Range(0, _width);
                 int y = Random.Range(0, _height);
 
-                if (_board[x,y] == safeTile)
+                if (_board[x, y] == safeTile)
                 {
-                    _board[x,y] = mine;
+                    _board[x, y] = mine;
                     exit = true;
                 }
             }
         }
+
+        _mined = true;
     }
 }

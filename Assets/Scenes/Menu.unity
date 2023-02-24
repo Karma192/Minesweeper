@@ -6039,7 +6039,20 @@ MonoBehaviour:
   _width: 0
   _mines: 0
   _lose: 0
-  _tiles: []
+  _win: 0
+  _number:
+  - {fileID: 0}
+  - {fileID: -488282492, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  - {fileID: -1202912640, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  - {fileID: 922456997, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  - {fileID: 426799697, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  - {fileID: -503049313, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  - {fileID: 486558714, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  - {fileID: 847153242, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  - {fileID: 576769762, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  _bomb: {fileID: -458877142, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  _flag: {fileID: 1137134662, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
+  _selected: {fileID: -509212926, guid: c6e15be2fad126e4fb57e2d851861be3, type: 3}
 --- !u!1 &2105845901
 GameObject:
   m_ObjectHideFlags: 0
