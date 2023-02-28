@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    private static SoundManager instance;
+
     private void Awake()
     {
+        if (instance != null && instance != this)
+            Destroy(gameObject);
+
+        instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -6,11 +7,13 @@ public class Game : MonoBehaviour
     public int width;
     public int height;
     public int mineCount;
+    [SerializeField] private GameObject mineUI;
 
     private Board board;
     private Cell[,] state;
     private bool firstClick;
     private bool gameover;
+    private GameObject data;
 
     private void OnValidate()
     {
@@ -19,15 +22,20 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        data = GameObject.Find("GameMaster");
         board = GetComponentInChildren<Board>();
     }
 
     private void Start()
     {
+        height = data.GetComponent<GameData>().GetHeight;
+        width = data.GetComponent<GameData>().GetWidth;
+        mineCount = data.GetComponent<GameData>().GetMines;
+        mineUI.GetComponent<Text>().text = mineCount.ToString();
         NewGame();
     }
 
-    private void NewGame()
+    public void NewGame()
     {
         state = new Cell[width, height];
         firstClick = true;
