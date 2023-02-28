@@ -11,6 +11,7 @@ public class Game : MonoBehaviour
     private Cell[,] state;
     private bool firstClick;
     private bool gameover;
+    private GameObject data;
 
     private void OnValidate()
     {
@@ -19,11 +20,15 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        data = GameObject.Find("GameMaster");
         board = GetComponentInChildren<Board>();
     }
 
     private void Start()
     {
+        height = data.GetComponent<GameData>().GetHeight;
+        width = data.GetComponent<GameData>().GetWidth;
+        mineCount = data.GetComponent<GameData>().GetMines;
         NewGame();
     }
 
