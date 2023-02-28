@@ -213,7 +213,10 @@ public class Game : MonoBehaviour
             case Cell.Type.Mine:
                 if (firstClick == true)
                 {
-
+                    if (GetCell(cell.position.x - 1, cell.position.y + 1).type != Cell.Type.Mine)
+                    {
+                        cell.type = Cell.Type.Mine;
+                    }
                     firstClick = false;
                 }
                 else
