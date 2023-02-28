@@ -18,11 +18,14 @@ public class GameData : MonoBehaviour
     void Awake()
     {
         if (instance != null && instance != this)
+        {
             Destroy(gameObject);
-
-        instance = this;
-
-        DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public int GetHeight { get => _height; set => _height = value; }
@@ -35,7 +38,7 @@ public class GameData : MonoBehaviour
         return _number[number];
     }
 
-    public void Height(string s){ _height = int.Parse(s); }
+    public void Height(string s) { _height = int.Parse(s); }
     public void Width(string s) { _width = int.Parse(s); }
     public void Mines(string s) { _mines = int.Parse(s); }
 }

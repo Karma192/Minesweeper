@@ -8,11 +8,15 @@ public class Game : MonoBehaviour
     public int height;
     public int mineCount;
     [SerializeField] private GameObject mineUI;
+    [SerializeField] private GameObject end;
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject losePanel;
 
     private Board board;
     private Cell[,] state;
     private bool firstClick;
     private bool gameover;
+    private bool win, lose;
     private GameObject data;
 
     private void OnValidate()
@@ -144,11 +148,7 @@ public class Game : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            NewGame();
-        }
-        else if (!gameover)
+        if (!gameover)
         {
             if (Input.GetMouseButtonDown(1))
             {
@@ -157,6 +157,18 @@ public class Game : MonoBehaviour
             else if (Input.GetMouseButtonDown(0))
             {
                 Reveal();
+            }
+        }
+        else if (gameover)
+        {
+            end.SetActive(true);
+            if (win)
+            {
+                winPanel.SetActive(true);
+            }
+            else if (lose)
+            {
+                losePanel.SetActive(true);
             }
         }
     }
@@ -264,6 +276,8 @@ public class Game : MonoBehaviour
     {
         Debug.Log("Game Over");
         gameover = true;
+        lose = true;
+        win = false;
 
         cell.revealed = true;
         cell.exploded = true;
@@ -302,6 +316,8 @@ public class Game : MonoBehaviour
 
         Debug.Log("Winner");
         gameover = true;
+        win = true;
+        lose = false;
 
         for (int x = 0; x < width; x++)
         {
