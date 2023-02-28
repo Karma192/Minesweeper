@@ -213,11 +213,15 @@ public class Game : MonoBehaviour
             case Cell.Type.Mine:
                 if (firstClick == true)
                 {
-                    if (GetCell(cell.position.x - 1, cell.position.y + 1).type != Cell.Type.Mine)
+                    if (GetCell(cell.position.x, cell.position.y).type != Cell.Type.Empty)
                     {
-                        cell.type = Cell.Type.Mine;
+                        NewGame();
+                        Reveal();
                     }
-                    firstClick = false;
+                    else
+                    {
+                        firstClick = false;
+                    }
                 }
                 else
                 {
@@ -231,9 +235,24 @@ public class Game : MonoBehaviour
                 break;
 
             default:
-                cell.revealed = true;
-                state[cellPosition.x, cellPosition.y] = cell;
-                CheckWinCondition();
+                if (firstClick == true)
+                {
+                    if (GetCell(cell.position.x, cell.position.y).type != Cell.Type.Empty)
+                    {
+                        NewGame();
+                        Reveal();
+                    }
+                    else
+                    {
+                        firstClick = false;
+                    }
+                }
+                else
+                {
+                    cell.revealed = true;
+                    state[cellPosition.x, cellPosition.y] = cell;
+                    CheckWinCondition();
+                }
                 break;
         }
 
