@@ -218,10 +218,6 @@ public class Game : MonoBehaviour
                         NewGame();
                         Reveal();
                     }
-                    else
-                    {
-                        firstClick = false;
-                    }
                 }
                 else
                 {
@@ -230,6 +226,7 @@ public class Game : MonoBehaviour
                 break;
 
             case Cell.Type.Empty:
+                firstClick = false;
                 Flood(cell);
                 CheckWinCondition();
                 break;
@@ -241,10 +238,6 @@ public class Game : MonoBehaviour
                     {
                         NewGame();
                         Reveal();
-                    }
-                    else
-                    {
-                        firstClick = false;
                     }
                 }
                 else
