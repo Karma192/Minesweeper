@@ -41,14 +41,6 @@ public class CreateTab : MonoBehaviour
         parent.transform.position = new Vector2(0.5f - _width / 2, 0.5f - _height / 2);
     }
 
-    private void LateUpdate()
-    {
-        if (_firstClick && !_mined)
-        {
-            CreateBomb();
-        }
-    }
-
     void InitTab()
     {
         SetBoard();
@@ -74,10 +66,7 @@ public class CreateTab : MonoBehaviour
                 _board[i, j] = safeTile;
             }
         }
-    }
 
-    private void CreateBomb()
-    {
         for (int i = 0; i < _nbMine; i++)
         {
             bool exit = false;
@@ -94,7 +83,5 @@ public class CreateTab : MonoBehaviour
                 }
             }
         }
-
-        _mined = true;
     }
 }

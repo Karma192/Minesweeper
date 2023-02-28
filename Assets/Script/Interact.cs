@@ -29,7 +29,7 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (!_flagged && !_clicked)
+            if (!_flagged && !_clicked && !_gameMaster.GetComponent<GameData>().Lose)
             {
                 GameObject.Find("BoardManager").gameObject.GetComponent<CreateTab>()._firstClick = true;
                 GetComponent<SpriteRenderer>().sprite = _gameMaster.GetComponent<GameData>()._selected;
@@ -72,33 +72,39 @@ public class Interact : MonoBehaviour
 
     private void Reveal()
     {
-        _clicked = true;
         _child.GetComponent<SpriteRenderer>().sprite = _gameMaster.GetComponent<GameData>().GetNumber(_nbBomb);
         _child.SetActive(true);
         if (_nbBomb == 0)
         {
             CheckReveal();
         }
+        _clicked = true;
     }
 
     private void CheckReveal()
     {
-        for (int i = 0; i < _neighbor.Count; i++)
+        if (_neighbor.Count != 0 && !_clicked)
         {
-            if (!_neighbor[i].transform.CompareTag("mine"))
+            for (int i = 0; i < _neighbor.Count; i++)
             {
-                _neighbor[i].GetComponent<Interact>().Reveal();
+                if (!_neighbor[i].transform.CompareTag("mine"))
+                {
+                    _neighbor[i].GetComponent<Interact>().Reveal();
+                }
             }
         }
     }
 
     private void GetNeighborMine()
     {
-        for (int i = 0; i < _neighbor.Count; i++)
+        if (!CompareTag("mine"))
         {
-            if (_neighbor[i].transform.CompareTag("mine"))
+            for (int i = 0; i < _neighbor.Count; i++)
             {
-                _nbBomb++;
+                if (_neighbor[i].transform.CompareTag("mine"))
+                {
+                    _nbBomb++;
+                }
             }
         }
     }
