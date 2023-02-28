@@ -9,6 +9,7 @@ public class Game : MonoBehaviour
 
     private Board board;
     private Cell[,] state;
+    private bool firstClick;
     private bool gameover;
 
     private void OnValidate()
@@ -29,6 +30,7 @@ public class Game : MonoBehaviour
     private void NewGame()
     {
         state = new Cell[width, height];
+        firstClick = true;
         gameover = false;
 
         GenerateCells();
@@ -209,7 +211,15 @@ public class Game : MonoBehaviour
         switch (cell.type)
         {
             case Cell.Type.Mine:
-                Explode(cell);
+                if (firstClick == true)
+                {
+
+                    firstClick = false;
+                }
+                else
+                {
+                    Explode(cell);
+                }
                 break;
 
             case Cell.Type.Empty:
