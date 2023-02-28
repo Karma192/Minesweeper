@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
+    private static GameData instance;
+    private GameData() { }
+
     [SerializeField] private int _height;
     [SerializeField] private int _width;
     [SerializeField] private int _mines;
@@ -14,6 +17,11 @@ public class GameData : MonoBehaviour
 
     void Awake()
     {
+        if (instance != null && instance != this)
+            Destroy(gameObject);
+
+        instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
 
