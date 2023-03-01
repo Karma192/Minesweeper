@@ -287,26 +287,16 @@ public class Game : MonoBehaviour
 
     private void RevealAdjacent(Cell cell)
     {
-        //int MineCount = 0;
-        int RevealCount = 0;
-        int NotRevealCount = 0;
+        int MineCount = 0;
         int FlagedCount = 0;
         for (int x = -1; x <= 1; x++)
         {
             for (int y = -1; y <= 1; y++)
             {
-                /*
+                
                 if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Mine)
                 {
                     MineCount++;
-                }*/
-                if (GetCell(cell.position.x + x, cell.position.y + y).revealed == true)
-                {
-                    RevealCount++;
-                }
-                if (GetCell(cell.position.x + x, cell.position.y + y).revealed == false)
-                {
-                    NotRevealCount++;
                 }
                 if (GetCell(cell.position.x + x, cell.position.y + y).flagged == true)
                 {
@@ -314,8 +304,8 @@ public class Game : MonoBehaviour
                 }
             }
         }
-
-        if (9 - (NotRevealCount + FlagedCount + RevealCount) == 0)
+        
+        if (MineCount == FlagedCount)
         {
             for (int x = -1; x <= 1; x++)
             {
@@ -342,44 +332,6 @@ public class Game : MonoBehaviour
                 }
             }
         }
-
-        /*
-        int MineNumber = 0;
-
-        for (int x = -1; x <= 1; x++)
-        {
-            for (int y = -1; y <= 1; y++)
-            {
-                if (GetCell(cell.position.x + x, cell.position.y + y).flagged == true)
-                {
-                    continue;
-                }
-                else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Mine)
-                {
-                    if (MineNumber != MineCount)
-                    {
-                        Explode(state[cell.position.x + x, cell.position.y + y]);
-                        continue;
-                    }
-                    else
-                    {
-                        Explode(state[cell.position.x + x, cell.position.y + y]);
-                        break;
-                    }                    
-                }
-                else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Empty)
-                {
-                    Flood(state[cell.position.x + x, cell.position.y + y]);
-                    continue;
-                }
-                else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Number)
-                {
-                    state[cell.position.x + x, cell.position.y + y].revealed = true;
-                    continue;
-                }
-            }
-        }
-        */
     }
 
     private void Explode(Cell cell)
