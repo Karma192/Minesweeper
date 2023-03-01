@@ -13,6 +13,16 @@ public class ClickOrKeyboard : MonoBehaviour
     void Start()
     {
         data = GameObject.Find("GameMaster");
+        if (!data.GetComponent<GameData>().KeyboardMode)
+        {
+            button.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 80);
+            text.text = "Click";
+        }
+        else
+        {
+            button.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 120);
+            text.text = "Keyboard";
+        }
     }
 
     // Update is called once per frame
