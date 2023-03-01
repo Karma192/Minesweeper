@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,11 @@ public class Game : MonoBehaviour
     private bool gameover;
     private bool win, lose;
     private GameObject data;
+
+    private float firstLeftClickTime;
+    private float timeBetweenLeftClick = 0.5f;
+    private bool isTimeCheckAllowed = true;
+    private int leftClickCount = 0;
 
     private void OnValidate()
     {
@@ -223,7 +230,7 @@ public class Game : MonoBehaviour
         Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
 
-        if (cell.type == Cell.Type.Invalid || cell.revealed || cell.flagged)
+        if (cell.type == Cell.Type.Invalid || cell.flagged)
         {
             return;
         }
@@ -251,7 +258,7 @@ public class Game : MonoBehaviour
                 CheckWinCondition();
                 break;
 
-            default:
+            case Cell.Type.Number:
                 if (firstClick == true)
                 {
                     if (GetCell(cell.position.x, cell.position.y).type != Cell.Type.Empty)
@@ -262,14 +269,117 @@ public class Game : MonoBehaviour
                 }
                 else
                 {
-                    cell.revealed = true;
-                    state[cellPosition.x, cellPosition.y] = cell;
-                    CheckWinCondition();
+                    if (cell.revealed != true)
+                    {
+                        cell.revealed = true;
+                        state[cellPosition.x, cellPosition.y] = cell;
+                        CheckWinCondition();
+                    }
+                    else if (cell.revealed == true)
+                    {
+                        RevealAdjacent(cell);
+                    }
                 }
                 break;
         }
-
         board.Draw(state);
+    }
+
+    private void RevealAdjacent(Cell cell)
+    {
+        //int MineCount = 0;
+        int RevealCount = 0;
+        int NotRevealCount = 0;
+        int FlagedCount = 0;
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                /*
+                if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Mine)
+                {
+                    MineCount++;
+                }*/
+                if (GetCell(cell.position.x + x, cell.position.y + y).revealed == true)
+                {
+                    RevealCount++;
+                }
+                if (GetCell(cell.position.x + x, cell.position.y + y).revealed == false)
+                {
+                    NotRevealCount++;
+                }
+                if (GetCell(cell.position.x + x, cell.position.y + y).flagged == true)
+                {
+                    FlagedCount++;
+                }
+            }
+        }
+
+        if (9 - (NotRevealCount + FlagedCount + RevealCount) == 0)
+        {
+            for (int x = -1; x <= 1; x++)
+            {
+                for (int y = -1; y <= 1; y++)
+                {
+                    if (GetCell(cell.position.x + x, cell.position.y + y).flagged == true)
+                    {
+                        continue;
+                    }
+                    else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Mine)
+                    {
+                        continue;
+                    }
+                    else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Empty)
+                    {
+                        Flood(state[cell.position.x + x, cell.position.y + y]);
+                        continue;
+                    }
+                    else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Number)
+                    {
+                        state[cell.position.x + x, cell.position.y + y].revealed = true;
+                        continue;
+                    }
+                }
+            }
+        }
+
+        /*
+        int MineNumber = 0;
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (GetCell(cell.position.x + x, cell.position.y + y).flagged == true)
+                {
+                    continue;
+                }
+                else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Mine)
+                {
+                    if (MineNumber != MineCount)
+                    {
+                        Explode(state[cell.position.x + x, cell.position.y + y]);
+                        continue;
+                    }
+                    else
+                    {
+                        Explode(state[cell.position.x + x, cell.position.y + y]);
+                        break;
+                    }                    
+                }
+                else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Empty)
+                {
+                    Flood(state[cell.position.x + x, cell.position.y + y]);
+                    continue;
+                }
+                else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Number)
+                {
+                    state[cell.position.x + x, cell.position.y + y].revealed = true;
+                    continue;
+                }
+            }
+        }
+        */
     }
 
     private void Explode(Cell cell)
