@@ -150,6 +150,7 @@ public class Game : MonoBehaviour
     {
         if (!gameover)
         {
+            Time.timeScale = 1;
             if (Input.GetMouseButtonDown(1))
             {
                 Flag();
@@ -161,6 +162,7 @@ public class Game : MonoBehaviour
         }
         else if (gameover)
         {
+            Time.timeScale = 0;
             end.SetActive(true);
             if (win)
             {

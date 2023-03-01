@@ -34,4 +34,9 @@ public class FindGM : MonoBehaviour
     {
         _gameMaster.GetComponent<SceneMaster>().ChangeScene(name);
     }
+
+    public void QuitGame()
+    {
+        _gameMaster.GetComponent<SceneMaster>().QuitGame();
+    }
 }
