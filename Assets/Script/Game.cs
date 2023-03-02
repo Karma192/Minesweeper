@@ -331,45 +331,6 @@ public class Game : MonoBehaviour
                         state[cell.position.x + x, cell.position.y + y].revealed = true;
                         continue;
                     }
-
-                    /*
-                    int MineNumber = 0;
-
-                    for (int x = -1; x <= 1; x++)
-                    {
-                        for (int y = -1; y <= 1; y++)
-                        {
-                            if (GetCell(cell.position.x + x, cell.position.y + y).flagged == true)
-                            {
-                                continue;
-                            }
-                            else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Mine)
-                            {
-                                if (MineNumber != MineCount)
-                                {
-                                    Explode(state[cell.position.x + x, cell.position.y + y]);
-                                    MineNumber++;
-                                    continue;
-                                }
-                                else
-                                {
-                                    Explode(state[cell.position.x + x, cell.position.y + y]);
-                                    break;
-                                }
-                            }
-                            else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Empty)
-                            {
-                                Flood(state[cell.position.x + x, cell.position.y + y]);
-                                continue;
-                            }
-                            else if (GetCell(cell.position.x + x, cell.position.y + y).type == Cell.Type.Number)
-                            {
-                                state[cell.position.x + x, cell.position.y + y].revealed = true;
-                                continue;
-                            }
-                        }
-                    }
-                    */
                 }
             }
         }
