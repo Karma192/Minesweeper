@@ -14,6 +14,7 @@ public class GameData : MonoBehaviour
     [SerializeField] private bool _win;
     [SerializeField] public Sprite[] _number = new Sprite[9];
     [SerializeField] public Sprite _bomb, _flag, _selected;
+    public bool _keyboardMode = false;
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class GameData : MonoBehaviour
     public int GetMines { get => _mines; set => _mines = value; }
     public bool Lose { get => _lose; set => _lose = value; }
     public bool Win { get => _win; set => _win = value; }
+    public bool KeyboardMode { get => _keyboardMode; set => _keyboardMode = value; }
     public Sprite GetNumber(int number)
     {
         return _number[number];

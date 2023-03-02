@@ -10,12 +10,14 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject end;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
+    [SerializeField] private GameObject circle;
 
     private Board board;
     private Cell[,] state;
     private bool firstClick;
     private bool gameover;
     private bool win, lose;
+    private bool keyboard;
     private GameObject data;
 
     private void OnValidate()
@@ -43,6 +45,7 @@ public class Game : MonoBehaviour
         state = new Cell[width, height];
         firstClick = true;
         gameover = false;
+        keyboard = data.GetComponent<GameData>().KeyboardMode;
 
         GenerateCells();
         GenerateMines();
@@ -150,13 +153,26 @@ public class Game : MonoBehaviour
         if (!gameover)
         {
             Time.timeScale = 1;
-            if (Input.GetMouseButtonDown(1))
+            if (!keyboard)
             {
-                Flag();
-            }
-            else if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(1))
+                {
+                    Flag();
+                }
+                else if (Input.GetMouseButtonDown(0))
+                {
+                    Reveal();
+                }
+            } else if (keyboard)
             {
-                Reveal();
+                if (Input.GetKeyUp(KeyCode.Space))
+                {
+                    Reveal();
+                }
+                else if (Input.GetKeyUp(KeyCode.Return))
+                {
+                    Flag();
+                }
             }
         }
         else if (gameover)
@@ -176,7 +192,16 @@ public class Game : MonoBehaviour
 
     private void Flag()
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldPosition = new Vector3();
+        if (!keyboard)
+        {
+            worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        else if (keyboard)
+        {
+            worldPosition = circle.transform.position;
+        }
+
         Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
 
@@ -220,7 +245,15 @@ public class Game : MonoBehaviour
 
     private void Reveal()
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldPosition = new Vector3();
+        if (!keyboard)
+        {
+            worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        else if (keyboard)
+        {
+            worldPosition = circle.transform.position;
+        }
         Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
 
