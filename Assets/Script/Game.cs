@@ -336,6 +336,7 @@ public class Game : MonoBehaviour
                 }
             }
         }
+        CheckWinCondition();
     }
 
     private void Explode(Cell cell)
