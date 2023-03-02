@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FindGM : MonoBehaviour
 {
-    [SerializeField] private GameObject _gameMaster;
+    private GameObject _gameMaster;
 
     private void Start()
     {
@@ -33,5 +31,10 @@ public class FindGM : MonoBehaviour
     public void ChangeScene(string name)
     {
         _gameMaster.GetComponent<SceneMaster>().ChangeScene(name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
