@@ -1,4 +1,3 @@
-    using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
