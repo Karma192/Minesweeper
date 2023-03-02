@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FindGM : MonoBehaviour
 {
-    [SerializeField] private GameObject _gameMaster;
+    private GameObject _gameMaster;
 
     private void Start()
     {
@@ -35,6 +35,6 @@ public class FindGM : MonoBehaviour
 
     public void QuitGame()
     {
-        _gameMaster.GetComponent<SceneMaster>().QuitGame();
+        Application.Quit();
     }
 }
