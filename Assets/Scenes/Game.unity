@@ -5569,6 +5569,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541552761}
   m_CullTransparentMesh: 1
+--- !u!1 &543200709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3477157149418070688, guid: 899dbfe132100b34aaa2399603ad3b37, type: 3}
+  m_PrefabInstance: {fileID: 698588013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &564323068
 GameObject:
   m_ObjectHideFlags: 0
@@ -7468,6 +7473,7 @@ MonoBehaviour:
   end: {fileID: 169321737}
   winPanel: {fileID: 576072655}
   losePanel: {fileID: 744653972}
+  circle: {fileID: 543200709}
 --- !u!114 &1721384340
 MonoBehaviour:
   m_ObjectHideFlags: 0
